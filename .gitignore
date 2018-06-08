@@ -71,3 +71,4 @@ typings/
 # Firebase
 functions/**/*.js*
 .config
+.firebaserc

@@ -1,7 +1,7 @@
 {
   "parser": "typescript-eslint-parser",
-  "extends": ["airbnb-base"],
-  "plugins": ["typescript"],
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["typescript", "prettier"],
   "rules": {
     "no-undef": "off",
     "import/extensions": "off",

@@ -1,9 +1,13 @@
+import express from 'express';
 import * as functions from 'firebase-functions';
 
-const helloWorld = functions.https.onRequest(
-  (_req: functions.Request, res: functions.Response): void => {
+const app = express();
+
+app.get(
+  '/helloWorld',
+  (_req: express.Request, res: express.Response): void => {
     res.send('Hello from Firebase!\n\n');
   }
 );
 
-exports.helloWorld = helloWorld;
+exports.app = functions.https.onRequest(app);

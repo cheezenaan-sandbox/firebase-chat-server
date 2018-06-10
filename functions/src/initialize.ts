@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express from 'express';
-import { checkUser } from './actions/checkUser';
+import { checkUser } from './actions';
 import { router } from './routes/v1/index';
 
 export default function initializeApplication() {

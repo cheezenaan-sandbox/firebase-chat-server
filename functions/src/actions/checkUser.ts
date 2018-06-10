@@ -1,6 +1,7 @@
 import express from 'express';
 import * as admin from 'firebase-admin';
-import { FIXME, User } from '../../custom.d';
+
+import { User } from '../../custom.d';
 
 const anonymousUser: User = {
   id: 'anon',
@@ -8,8 +9,12 @@ const anonymousUser: User = {
   avatar: '',
 };
 
+export type ExtendedRequest = express.Request & {
+  user: User;
+};
+
 export const checkUser = (
-  req: FIXME,
+  req: ExtendedRequest,
   _res: express.Response,
   next: express.NextFunction
 ) => {

@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import { router } from './routes/v1/index';
 
 export default function initializeApplication() {
   const app = express();
@@ -11,6 +12,8 @@ export default function initializeApplication() {
       res.send('Hello from Express on Firebase with CORS request!!\n\n');
     }
   );
+
+  app.use('/api/v1', router);
 
   return app;
 }

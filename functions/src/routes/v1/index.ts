@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { FIXME } from '../../../custom';
+import { User } from '../../../custom';
 import {
   createChannel,
   createMessage,
@@ -31,10 +31,16 @@ router.get(
   }
 );
 
+interface Request extends express.Request {
+  params: any;
+  body: any;
+  user?: User;
+}
+
 // POST /api/v1/:channelName/messages
 router.post(
   '/channels/:channelName/messages',
-  (req: FIXME, res: express.Response): void => {
+  (req: Request, res: express.Response) => {
     const { params, body, user } = req;
 
     createMessage({

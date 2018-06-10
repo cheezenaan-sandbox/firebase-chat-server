@@ -1,10 +1,11 @@
 import * as admin from 'firebase-admin';
-import { Message, User } from '../../custom';
+
+import { User } from '../../custom';
 
 interface CreateMessageInterface {
   channelName: string;
   body: string;
-  user: User;
+  user?: User;
 }
 
 export const createMessage = ({
@@ -12,7 +13,7 @@ export const createMessage = ({
   body,
   user,
 }: CreateMessageInterface) => {
-  const message: Message = {
+  const message = {
     date: new Date().toJSON(),
     body,
     user,

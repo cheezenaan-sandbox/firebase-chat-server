@@ -1,8 +1,6 @@
 import express from 'express';
 import { FIXME } from '../../../custom';
-import { createChannel } from '../../actions/createChannel';
-import { createMessage } from '../../actions/createMessage';
-import { fetchChannels } from '../../actions/fetchChannels';
+import { createChannel, createMessage, fetchChannels } from '../../actions';
 
 export const router = express.Router();
 

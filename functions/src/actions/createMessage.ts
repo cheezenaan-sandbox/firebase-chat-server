@@ -1,5 +1,5 @@
 import * as admin from 'firebase-admin';
-import { Message, User } from '../../../custom';
+import { Message, User } from '../../custom';
 
 interface CreateMessageInterface {
   channelName: string;

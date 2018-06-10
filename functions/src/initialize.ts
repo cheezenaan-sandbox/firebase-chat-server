@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express from 'express';
+import { checkUser } from './actions/checkUser';
 import { router } from './routes/v1/index';
 
 export default function initializeApplication() {
@@ -14,6 +15,7 @@ export default function initializeApplication() {
   );
 
   app.use('/api/v1', router);
+  app.use(checkUser);
 
   return app;
 }

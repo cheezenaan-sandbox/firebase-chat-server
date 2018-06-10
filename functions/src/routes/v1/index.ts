@@ -1,6 +1,11 @@
 import express from 'express';
 import { FIXME } from '../../../custom';
-import { createChannel, createMessage, fetchChannels } from '../../actions';
+import {
+  createChannel,
+  createMessage,
+  fetchChannels,
+  fetchMessages,
+} from '../../actions';
 
 export const router = express.Router();
 
@@ -39,5 +44,17 @@ router.post(
 
     res.header('Content-Type', 'application/json; charset=utf-8');
     res.status(201).json({ result: 'ok' });
+  }
+);
+
+// GET /api/v1/channels/:channelName/messages
+router.get(
+  '/channels/:channelName/messages',
+  async (req: express.Request, res: express.Response) => {
+    const { channelName } = req.params;
+
+    const messages = await fetchMessages({ channelName });
+    res.header('Content-Type', 'application/json; charset=utf-8');
+    res.send({ messages });
   }
 );

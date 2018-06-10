@@ -1,16 +1,5 @@
 import * as admin from 'firebase-admin';
-
-interface Message {
-  body: string;
-  date: string;
-  user: User;
-}
-
-interface User {
-  id: string;
-  nickname: string;
-  avatar: string;
-}
+import { Message } from '../../custom';
 
 const defaultData = (channelName: string): { [id: string]: Message } => {
   const firstDate = new Date();
@@ -40,6 +29,8 @@ const defaultData = (channelName: string): { [id: string]: Message } => {
 };
 
 export const createChannel = (channelName: string) => {
-  const channelsRef = admin.database().ref('channels');
+  const channelsRef: admin.database.Reference = admin
+    .database()
+    .ref('channels');
   channelsRef.child(channelName).set({ messages: defaultData(channelName) });
 };

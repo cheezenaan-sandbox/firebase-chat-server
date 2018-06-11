@@ -10,7 +10,7 @@ const anonymousUser: User = {
 };
 
 export type ExtendedRequest = express.Request & {
-  user: User;
+  user?: User;
 };
 
 export const checkUser = (

@@ -13,3 +13,10 @@ services:
       - 5000:5000
       - 5001:5001
       - 9005:9005
+  client:
+    build:
+      context: .
+      dockerfile: ./client/docker/Dockerfile.dev
+    command: ./docker/entrypoint.sh
+    volumes:
+      - ./client:/client:${CONSISTENCY:-cached}

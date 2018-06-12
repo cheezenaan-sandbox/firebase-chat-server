@@ -17,6 +17,11 @@ services:
     build:
       context: .
       dockerfile: ./client/docker/Dockerfile.dev
+    environment:
+      LOCAL_IP: ${LOCAL_IP:-0.0.0.0}
     command: ./docker/entrypoint.sh
     volumes:
       - ./client:/client:${CONSISTENCY:-cached}
+    ports:
+      - 8080:8080
+      - 8081:8081

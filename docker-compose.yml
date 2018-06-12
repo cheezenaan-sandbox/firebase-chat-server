@@ -1,11 +1,11 @@
 version: "3"
 
 services:
-  node:
+  server:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile.dev
-    command: ./docker/entrypoint.sh
+      dockerfile: ./functions/docker/Dockerfile.dev
+    command: ./functions/docker/entrypoint.sh
     volumes:
       - ./:/app:${CONSISTENCY:-cached}
       - ./.config/:/root/.config:${CONSISTENCY:-cached}

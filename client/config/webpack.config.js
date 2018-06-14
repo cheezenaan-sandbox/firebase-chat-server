@@ -1,6 +1,7 @@
 const path = require('path');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
@@ -20,5 +21,10 @@ module.exports = {
       { test: /\.ts(x?)$/, exclude: /node_modules/, loader: 'ts-loader' },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, '../src/index.html'),
+    }),
+  ],
   devtool: isProduction ? 'eval' : 'cheap-module-source-map',
 };

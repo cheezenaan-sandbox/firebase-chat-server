@@ -9,6 +9,13 @@
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "prettier/prettier": "error",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["/**/*.story.tsx", "/**/webpack.config.js"],
+        "peerDependencies": false
+      }
+    ]
   }
 }

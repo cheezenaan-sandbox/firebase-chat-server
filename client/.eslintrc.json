@@ -1,6 +1,6 @@
 {
   "parser": "typescript-eslint-parser",
-  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["typescript", "prettier"],
   "rules": {
     "no-undef": "off",
@@ -8,6 +8,7 @@
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": "off"
   }
 }

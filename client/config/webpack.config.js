@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    bundle: './src/index.ts',
+    bundle: './src/Routes.tsx',
   },
   output: {
     path: path.join(__dirname, '../../public/assets/'),

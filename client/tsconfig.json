@@ -19,5 +19,7 @@
     /* Module Resolution Options */
     "moduleResolution": "node",
     "esModuleInterop": true
-  }
+  },
+  "include": ["src/**/*.ts", "../custom.d.ts"],
+  "exclude": ["node_modules"]
 }

@@ -1,12 +1,7 @@
 import express from 'express';
 
-import { User } from '../../../custom';
-import {
-  createChannel,
-  createMessage,
-  fetchChannels,
-  fetchMessages,
-} from '../../actions';
+import { User } from '../../../../custom';
+import { createChannel, createMessage, fetchChannels, fetchMessages } from '../../actions';
 
 export const router = express.Router();
 
@@ -46,6 +41,7 @@ router.post(
       body: { body },
       user,
     } = req;
+    console.log('req', req.body);
 
     createMessage({
       channelName: params.channelName,

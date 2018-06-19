@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 
-import { Message } from '../../custom';
+import { Message } from '../../../custom';
 
 interface fetchMessagesInterface {
   channelName: string;

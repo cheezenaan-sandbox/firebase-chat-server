@@ -7,6 +7,6 @@ const props = {
   channelName: 'Sound! Euphonium',
 };
 
-storiesOf('MessageFeed', module).add('Default', () => (
+storiesOf('Components/MessageFeed', module).add('default', () => (
   <MessageFeed {...props} />
 ));

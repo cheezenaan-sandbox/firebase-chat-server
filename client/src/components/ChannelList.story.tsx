@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { ChannelList } from './ChannelList';
 
-storiesOf('ChannelList', module).add('Default', () => (
+storiesOf('Components/ChannelList', module).add('default', () => (
   <BrowserRouter>
     <ChannelList />
   </BrowserRouter>

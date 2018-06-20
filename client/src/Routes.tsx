@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Container } from 'semantic-ui-react';
 
 import { ChannelList } from './components';
+import { Channel } from './containers';
 
 const routes = (
   <BrowserRouter>
@@ -12,11 +13,7 @@ const routes = (
       <main style={{ margin: '1rem 0 1rem 16rem' }}>
         <Container>
           <Switch>
-            <Route
-              exact
-              path="/channels/:channelName"
-              render={props => <h2>{props.match.params.channelName}</h2>}
-            />
+            <Route exact path="/channels/:channelName" component={Channel} />
             <Route exact path="/" render={() => <h1>Sample Application</h1>} />
           </Switch>
         </Container>

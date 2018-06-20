@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { match } from 'react-router-dom';
 
-import MessageFeed from '../components/MessageFeed';
+import { MessageFeed, MessageForm } from '../components';
 
 interface ChannelMatch {
   channelName: string;
@@ -18,5 +18,10 @@ export const Channel = (props: Props) => {
     },
   } = props;
 
-  return <MessageFeed channelName={channelName} />;
+  return (
+    <React.Fragment>
+      <MessageFeed channelName={channelName} />
+      <MessageForm channelName={channelName} />
+    </React.Fragment>
+  );
 };

@@ -12,7 +12,7 @@ interface State {
   messages: Message[];
 }
 
-export default class MessageFeed extends React.Component<Props, State> {
+export class MessageFeed extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

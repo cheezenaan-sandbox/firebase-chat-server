@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import MessageFeed from './MessageFeed';
+
+import { MessageFeed } from './MessageFeed';
 
 // TODO
 const props = {

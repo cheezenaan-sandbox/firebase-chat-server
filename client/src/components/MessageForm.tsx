@@ -9,7 +9,7 @@ interface State {
   body?: string;
 }
 
-export default class MessageForm extends React.Component<Props, State> {
+export class MessageForm extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {

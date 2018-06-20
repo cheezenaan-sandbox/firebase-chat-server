@@ -1,8 +1,13 @@
+import { text, withKnobs } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 
-import { MessageForm } from './MessageForm';
+import MessageForm from './MessageForm';
 
-storiesOf('Components/MessageForm', module).add('default', () => (
-  <MessageForm />
-));
+const props = {
+  channelName: text('channelName', 'general'),
+};
+
+storiesOf('Components/MessageForm', module)
+  .addDecorator(withKnobs)
+  .add('default', () => <MessageForm {...props} />);

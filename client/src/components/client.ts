@@ -15,3 +15,12 @@ export const fetchMessages = (
   cancelToken: CancelToken | undefined = undefined // TODO: undefined でいいのか…?
 ): Promise<AxiosResponse<{ messages: Message[] }>> =>
   instance.get(`/channels/${channelName}/messages`, { params, cancelToken });
+
+export const postMessage = (
+  channelName: string,
+  payload: Message,
+  cancelToken: CancelToken
+): Promise<AxiosResponse<Message>> =>
+  instance.post(`/channels/${channelName}/messages`, payload, {
+    cancelToken,
+  });

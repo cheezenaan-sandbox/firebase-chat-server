@@ -21,7 +21,10 @@ export const checkUser = (
   req.user = anonymousUser;
 
   const idToken = req.query.auth_token;
-  if (!idToken) next();
+  if (!idToken) {
+    next();
+    return;
+  }
 
   admin
     .auth()

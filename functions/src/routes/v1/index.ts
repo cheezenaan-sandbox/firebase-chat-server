@@ -41,11 +41,15 @@ interface Request extends express.Request {
 router.post(
   '/channels/:channelName/messages',
   (req: Request, res: express.Response) => {
-    const { params, body, user } = req;
+    const {
+      params,
+      body: { body },
+      user,
+    } = req;
 
     createMessage({
       channelName: params.channelName,
-      body: body.body,
+      body,
       user,
     });
 

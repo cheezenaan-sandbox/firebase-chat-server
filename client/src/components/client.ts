@@ -19,7 +19,7 @@ export const fetchMessages = (
 export const postMessage = (
   channelName: string,
   payload: Message,
-  cancelToken: CancelToken
+  cancelToken: CancelToken | undefined = undefined
 ): Promise<AxiosResponse<Message>> =>
   instance.post(`/channels/${channelName}/messages`, payload, {
     cancelToken,

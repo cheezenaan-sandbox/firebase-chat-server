@@ -11,17 +11,44 @@ interface Props {
   match: match<ChannelMatch>;
 }
 
-export const Channel = (props: Props) => {
-  const {
-    match: {
-      params: { channelName },
-    },
-  } = props;
+interface State {
+  shouldReload: boolean;
+}
 
-  return (
-    <React.Fragment>
-      <MessageFeed channelName={channelName} />
-      <MessageForm channelName={channelName} />
-    </React.Fragment>
-  );
-};
+export class Channel extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      shouldReload: false,
+    };
+  }
+
+  private toggleShouldReload = (shouldReload: boolean) => {
+    this.setState({
+      shouldReload,
+    });
+  };
+
+  public render() {
+    const {
+      match: {
+        params: { channelName },
+      },
+    } = this.props;
+    const { shouldReload } = this.state;
+
+    return (
+      <React.Fragment>
+        <MessageFeed
+          channelName={channelName}
+          shouldReload={shouldReload}
+          toggleShouldReload={this.toggleShouldReload}
+        />
+        <MessageForm
+          channelName={channelName}
+          toggleShouldReload={this.toggleShouldReload}
+        />
+      </React.Fragment>
+    );
+  }
+}

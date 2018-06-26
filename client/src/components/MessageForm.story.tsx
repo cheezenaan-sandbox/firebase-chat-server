@@ -6,6 +6,8 @@ import { MessageForm } from './MessageForm';
 
 const props = {
   channelName: text('channelName', 'general'),
+  shouldReload: false,
+  toggleShouldReload: () => {},
 };
 
 storiesOf('Components/MessageForm', module)

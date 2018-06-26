@@ -6,6 +6,8 @@ import { fetchMessages } from './client';
 
 interface Props {
   channelName: string;
+  shouldReload: boolean;
+  toggleShouldReload: (shouldReload: boolean) => void;
 }
 
 interface State {
@@ -26,12 +28,18 @@ export class MessageFeed extends React.Component<Props, State> {
   }
 
   public componentDidUpdate(prevProps: Props) {
-    if (prevProps.channelName !== this.props.channelName) {
+    const shouldfetchMessage =
+      prevProps.channelName !== this.props.channelName ||
+      (!prevProps.shouldReload && this.props.shouldReload);
+
+    if (shouldfetchMessage) {
       this.fetchMessages(this.props.channelName);
     }
   }
 
   private fetchMessages(channelName: string) {
+    this.props.toggleShouldReload(false);
+
     fetchMessages(channelName)
       .then(response => {
         this.setState({ messages: response.data.messages });

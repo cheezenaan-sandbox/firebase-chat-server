@@ -6,6 +6,7 @@ import { postMessage } from './client';
 
 interface Props {
   channelName: string;
+  toggleShouldReload: (shouldReload: boolean) => void;
 }
 
 interface State {
@@ -30,13 +31,14 @@ export class MessageForm extends React.Component<Props, State> {
   private handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { channelName } = this.props;
+    const { channelName, toggleShouldReload } = this.props;
     const { body } = this.state;
     const payload = { body } as Message;
 
     postMessage(channelName, payload)
       .then(() => {
         this.setState({ body: '' });
+        toggleShouldReload(true);
       })
       .catch(error => console.warn(error));
   };

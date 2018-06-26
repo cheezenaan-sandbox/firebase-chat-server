@@ -3,9 +3,11 @@ import * as React from 'react';
 
 import { MessageFeed } from './MessageFeed';
 
-// TODO
+// TODO: toggleShouldReload の扱いが微妙すぎる…
 const props = {
   channelName: 'Sound! Euphonium',
+  shouldReload: false,
+  toggleShouldReload: () => {},
 };
 
 storiesOf('Components/MessageFeed', module).add('default', () => (

@@ -72,5 +72,4 @@ typings/
 functions/**/*.js*
 .config
 .firebaserc
-
-public/assets
+public/

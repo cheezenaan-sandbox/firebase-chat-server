@@ -5,12 +5,17 @@
       {
         "source": "/api/**",
         "function": "app"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ],
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "functions": {
-    "predeploy": "npm --prefix functions run build",
+    "predeploy":
+      "npm --prefix functions run build; npm --prefix client run build",
     "source": "functions"
   }
 }

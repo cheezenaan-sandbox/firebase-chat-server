@@ -1,6 +1,6 @@
 import Axios, { AxiosInstance, AxiosResponse, CancelToken } from 'axios';
 
-import { Message } from '../../../custom';
+import { Message } from '../../../shared/custom';
 
 const baseURL = 'https://getting-started-frontend-4545.firebaseapp.com/api/v1';
 

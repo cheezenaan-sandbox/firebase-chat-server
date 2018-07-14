@@ -4,4 +4,4 @@ echo "Install dependencies ..."
 yarn install
 
 echo "Initialize local server ..."
-yarn serve
+yarn serve -o 0.0.0.0

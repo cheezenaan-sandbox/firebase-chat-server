@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Comment, Header } from 'semantic-ui-react';
 
-import { Message } from '../../../custom';
+import { Message } from '../../../shared/custom';
 import { fetchMessages } from './client';
 
 interface Props {

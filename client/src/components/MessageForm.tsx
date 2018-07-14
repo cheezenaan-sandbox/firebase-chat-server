@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button, Form, Segment, TextArea } from 'semantic-ui-react';
 
-import { Message } from '../../../custom';
+import { Message } from '../../../shared/custom';
 import { postMessage } from './client';
 
 interface Props {

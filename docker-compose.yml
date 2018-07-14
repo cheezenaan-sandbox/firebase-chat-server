@@ -21,6 +21,7 @@ services:
       LOCAL_IP: ${LOCAL_IP:-0.0.0.0}
     command: ./docker/entrypoint.sh
     volumes:
+      - ./shared:/shared:${CONSISTENCY:-cached}
       - ./client:/client:${CONSISTENCY:-cached}
     ports:
       - 8080:8080

@@ -1,7 +1,12 @@
 import express from 'express';
 
-import { User } from '../../../../custom';
-import { createChannel, createMessage, fetchChannels, fetchMessages } from '../../actions';
+import { User } from '../../../../shared/custom';
+import {
+  createChannel,
+  createMessage,
+  fetchChannels,
+  fetchMessages,
+} from '../../actions';
 
 export const router = express.Router();
 

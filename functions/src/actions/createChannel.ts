@@ -1,6 +1,6 @@
 import * as admin from 'firebase-admin';
 
-import { Message } from '../../../custom';
+import { Message } from '../../../shared/custom';
 
 const defaultData = (channelName: string): { [id: string]: Message } => {
   const firstDate = new Date();

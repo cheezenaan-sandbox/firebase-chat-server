@@ -1,7 +1,7 @@
 import express from 'express';
 import * as admin from 'firebase-admin';
 
-import { User } from '../../../custom';
+import { User } from '../../../shared/custom';
 
 const anonymousUser: User = {
   id: 'anon',

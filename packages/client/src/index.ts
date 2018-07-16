@@ -1,8 +1,14 @@
-import Hello from './hello';
+import Vue from 'vue';
 
-const initializeHello = () => {
-  const hello = new Hello();
-  hello.soundEuphonium();
-};
-
-initializeHello();
+export const v = new Vue({
+  el: '#app',
+  data: {
+    name: 'Euphonium',
+  },
+  template: `
+    <div>
+      <div>Hello {{ name }}!</div>
+      Name: <input v-model="name" type="text" />
+    </div>
+  `,
+});

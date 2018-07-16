@@ -11,6 +11,7 @@ interface Props {
 
 interface State {
   body?: string;
+  isSubmiting: boolean;
 }
 
 export class MessageForm extends React.Component<Props, State> {
@@ -18,6 +19,7 @@ export class MessageForm extends React.Component<Props, State> {
     super(props);
     this.state = {
       body: '',
+      isSubmiting: false,
     };
   }
 
@@ -31,19 +33,26 @@ export class MessageForm extends React.Component<Props, State> {
   private handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { channelName, toggleShouldReload } = this.props;
     const { body } = this.state;
+    if (!body) return;
+
     const payload = { body } as Message;
+    const { channelName, toggleShouldReload } = this.props;
+    this.setState({ isSubmiting: true });
 
     postMessage(channelName, payload)
       .then(() => {
-        this.setState({ body: '' });
+        this.setState({ body: '', isSubmiting: false });
         toggleShouldReload(true);
       })
-      .catch(error => console.warn(error));
+      .catch(error => {
+        console.warn(error);
+        this.setState({ isSubmiting: false });
+      });
   };
+
   public render() {
-    const { body } = this.state;
+    const { body, isSubmiting } = this.state;
 
     return (
       <Segment basic textAlign="center">
@@ -56,7 +65,7 @@ export class MessageForm extends React.Component<Props, State> {
               value={body}
             />
           </Form.Field>
-          <Button primary type="submit">
+          <Button primary={!isSubmiting} disabled={isSubmiting} type="submit">
             Send
           </Button>
         </Form>

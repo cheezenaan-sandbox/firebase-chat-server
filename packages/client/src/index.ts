@@ -1,14 +1,18 @@
 import Vue from 'vue';
+import HelloComponent from './components/hello';
 
 export const v = new Vue({
   el: '#app',
+  components: {
+    HelloComponent,
+  },
   data: {
     name: 'Euphonium',
   },
   template: `
     <div>
-      <div>Hello {{ name }}!</div>
       Name: <input v-model="name" type="text" />
+      <hello-component :name="name" :initialEnthusiasm="5" />
     </div>
   `,
 });

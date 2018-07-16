@@ -6,10 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
   entry: {
-    bundle: './src/index.ts',
+    'assets/bundle': './src/index.ts',
   },
   output: {
-    path: path.join(__dirname, '../../public/assets/'),
+    path: path.join(__dirname, '../../../public/'),
+    publicPath: '/',
     filename: '[name].js',
   },
   resolve: {

@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf ./lib/**/*.js*",
+    "build": "yarn clean && tsc",
+    "serve": "yarn build && firebase serve --only functions,hosting",
+    "shell": "yarn build && firebase functions:shell",
+    "start": "yarn shell",
+    "logs": "firebase functions:log",
+    "lint": "eslint --ext js,ts ./src"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "firebase-admin": "~5.12.1",
+    "firebase-functions": "^1.0.4",
+    "shared-library": "0.0.1"
+  }
+}

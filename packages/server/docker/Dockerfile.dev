@@ -2,7 +2,7 @@ FROM node:carbon-alpine
 LABEL maintainer "cheezenaan <cheezenaan@gmail.com>"
 
 ENV \
-  APP_DIR="/server"
+  APP_DIR="/packages/server"
 
 WORKDIR ${APP_DIR}
 

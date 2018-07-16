@@ -4,12 +4,14 @@ services:
   server:
     build:
       context: .
-      dockerfile: ./server/docker/Dockerfile.dev
+      dockerfile: ./packages/server/docker/Dockerfile.dev
     command: ./docker/entrypoint.sh
     volumes:
-      - ./.firebaserc:/server/.firebaserc:${CONSISTENCY:-cached}
-      - ./server:/server:${CONSISTENCY:-cached}
       - ./.config/:/root/.config:${CONSISTENCY:-cached}
+      - ./.firebaserc:/packages/server/.firebaserc:${CONSISTENCY:-cached}
+      - ./package.json:/package.json:${CONSISTENCY:-cached}
+      - ./packages/shared:/packages/shared:${CONSISTENCY:-cached}
+      - ./packages/server:/packages/server:${CONSISTENCY:-cached}
     ports:
       - 5000:5000
       - 5001:5001
@@ -17,12 +19,14 @@ services:
   client:
     build:
       context: .
-      dockerfile: ./client/docker/Dockerfile.dev
+      dockerfile: ./packages/client/docker/Dockerfile.dev
     environment:
       LOCAL_IP: ${LOCAL_IP:-0.0.0.0}
     command: ./docker/entrypoint.sh
     volumes:
-      - ./client:/client:${CONSISTENCY:-cached}
+      - ./package.json:/package.json:${CONSISTENCY:-cached}
+      - ./packages/shared:/packages/shared:${CONSISTENCY:-cached}
+      - ./packages/client:/packages/client:${CONSISTENCY:-cached}
     ports:
       - 8080:8080
       - 8081:8081

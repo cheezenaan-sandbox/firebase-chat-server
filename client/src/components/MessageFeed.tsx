@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Comment, Header } from 'semantic-ui-react';
+import { Comment, Header, Dimmer, Loader } from 'semantic-ui-react';
 
 import { Message } from '../../../shared/custom';
 import { fetchMessages } from './client';
@@ -12,6 +12,7 @@ interface Props {
 
 interface State {
   messages: Message[];
+  isLoading: boolean;
 }
 
 export class MessageFeed extends React.Component<Props, State> {
@@ -19,6 +20,7 @@ export class MessageFeed extends React.Component<Props, State> {
     super(props);
     this.state = {
       messages: [],
+      isLoading: false,
     };
   }
 
@@ -39,19 +41,29 @@ export class MessageFeed extends React.Component<Props, State> {
 
   private fetchMessages(channelName: string) {
     this.props.toggleShouldReload(false);
+    this.setState({ isLoading: true });
 
     fetchMessages(channelName)
       .then(response => {
-        this.setState({ messages: response.data.messages });
+        this.setState({ messages: response.data.messages, isLoading: false });
       })
       .catch(error => {
         console.warn(error);
+        this.setState({ isLoading: false });
       });
   }
 
   public render() {
     const { channelName } = this.props;
-    const { messages } = this.state;
+    const { messages, isLoading } = this.state;
+
+    if (isLoading) {
+      return (
+        <Dimmer active>
+          <Loader />
+        </Dimmer>
+      );
+    }
 
     return (
       <Comment.Group>

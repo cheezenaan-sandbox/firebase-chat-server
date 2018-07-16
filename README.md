@@ -7,29 +7,28 @@ ref. http://gihyo.jp/book/2018/978-4-7741-9706-7
 ### Initalize firebase
 
 ```sh
-docker-compose run --rm --service-ports server sh
-```
+cp .firebaserc.sample .firebaserc
+cp .env.sample .env
 
-```sh
-# Inside docker container:
-firebase login
-firebase init
+# Use FIREBASE_TOKEN to deploy
+docker-compose run --rm --service-ports server firebase login:ci
+echo FIREBASE_TOKEN=1/xxxxxx | tee -a .env >/dev/null
+
+docker-compose run --rm --service-ports server firebase use --add
 ```
 
 ### Development on local server
 
 ```sh
-docker-compose up
-```
+# For Cloud Functions: open http://localhost:5000/
+docker-compose up server
 
-open `localhost:5000`
+# For client side application: open http://localhost:8080/
+docker-compose up client
+```
 
 ## Deploy
 
 ```sh
-# Use FIREBASE_TOKEN to deploy
-firebase login:ci
-echo FIREBASE_TOKEN=1/xxxxxx | tee -a .env >/dev/null
-
 NODE_ENV=production docker-compose up deploy
 ```

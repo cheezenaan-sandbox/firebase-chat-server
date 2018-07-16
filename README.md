@@ -1,4 +1,4 @@
-# firebase-chat-server
+# Firebase chat application
 
 ref. http://gihyo.jp/book/2018/978-4-7741-9706-7
 
@@ -7,8 +7,13 @@ ref. http://gihyo.jp/book/2018/978-4-7741-9706-7
 ### Initalize firebase
 
 ```sh
-docker-compose run --rm --service-ports node firebase login
-docker-compose run --rm --service-ports node firebase init
+docker-compose run --rm --service-ports server sh
+```
+
+```sh
+# Inside docker container:
+firebase login
+firebase init
 ```
 
 ### Development on local server
@@ -19,8 +24,12 @@ docker-compose up
 
 open `localhost:5000`
 
-### Deploy functions
+## Deploy
 
 ```sh
-docker exec -it $(docker ps -qf "name=firebase-chat-server") firebase deploy --only functions
+# Use FIREBASE_TOKEN to deploy
+firebase login:ci
+echo FIREBASE_TOKEN=1/xxxxxx | tee -a .env >/dev/null
+
+NODE_ENV=production docker-compose up deploy
 ```

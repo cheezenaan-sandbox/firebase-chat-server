@@ -6,9 +6,10 @@ services:
       context: .
       dockerfile: ./packages/server/docker/Dockerfile.dev
     command: ./docker/entrypoint.sh
+    env_file:
+      - .env
     volumes:
-      - ./.config/:/root/.config:${CONSISTENCY:-cached}
-      - ./.firebaserc:/packages/server/.firebaserc:${CONSISTENCY:-cached}
+      - ./.firebaserc:/.firebaserc:${CONSISTENCY:-cached}
       - ./package.json:/package.json:${CONSISTENCY:-cached}
       - ./packages/shared:/packages/shared:${CONSISTENCY:-cached}
       - ./packages/server:/packages/server:${CONSISTENCY:-cached}
@@ -28,3 +29,12 @@ services:
     ports:
       - 8080:8080
       - 8081:8081
+  deploy:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: ./scripts/deploy.sh
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+    env_file:
+      - .env

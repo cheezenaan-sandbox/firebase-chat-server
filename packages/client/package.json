@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "build": "yarn clean && webpack --config config/webpack.config.js",
+    "build": "webpack --config config/webpack.config.js",
     "clean": "rimraf ./dist/**/*.js",
     "lint": "eslint --ext ts,tsx src/",
     "serve": "webpack-serve --config config/serve.config.js"

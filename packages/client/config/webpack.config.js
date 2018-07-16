@@ -14,12 +14,39 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
+    extensions: ['.ts', '.tsx', '.js', 'vue'],
     modules: [path.join(__dirname, '../src'), 'node_modules'],
+    alias: {
+      vue$: 'vue/dist/vue.esm.js',
+    },
   },
   module: {
     rules: [
-      { test: /\.ts(x?)$/, exclude: /node_modules/, loader: 'ts-loader' },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loader: {
+            scss: 'vue-style-loader!css-loader!sass-loader',
+            sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
+          },
+        },
+      },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
+        options: {
+          appendTsSuffixTo: [/\.vue$/],
+        },
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]',
+        },
+      },
     ],
   },
   plugins: [

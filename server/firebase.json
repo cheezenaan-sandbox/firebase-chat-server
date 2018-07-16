@@ -10,7 +10,7 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
   },
   "functions": {
-    "predeploy": "npm --prefix server run build",
-    "source": "server"
+    "predeploy": "npm run build",
+    "source": "/"
   }
 }

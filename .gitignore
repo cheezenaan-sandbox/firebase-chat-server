@@ -69,7 +69,7 @@ typings/
 .serverless
 
 # Firebase
-functions/**/*.js*
+server/**/*.js*
 .config
 .firebaserc
 

@@ -4,10 +4,11 @@ services:
   server:
     build:
       context: .
-      dockerfile: ./functions/docker/Dockerfile.dev
-    command: ./functions/docker/entrypoint.sh
+      dockerfile: ./server/docker/Dockerfile.dev
+    command: ./docker/entrypoint.sh
     volumes:
-      - ./:/app:${CONSISTENCY:-cached}
+      - ./.firebaserc:/server/.firebaserc:${CONSISTENCY:-cached}
+      - ./server:/server:${CONSISTENCY:-cached}
       - ./.config/:/root/.config:${CONSISTENCY:-cached}
     ports:
       - 5000:5000

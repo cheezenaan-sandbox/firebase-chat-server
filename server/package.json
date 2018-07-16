@@ -1,7 +1,7 @@
 {
   "name": "functions",
   "scripts": {
-    "clean": "rimraf ./lib/*.js*",
+    "clean": "rimraf ./lib/**/*.js*",
     "build": "yarn clean && tsc",
     "serve": "yarn build && firebase serve --only functions,hosting",
     "shell": "yarn build && firebase functions:shell",

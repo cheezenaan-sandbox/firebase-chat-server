@@ -1,6 +1,4 @@
 #!/bin/sh -e
-cd functions
-
 echo "Install dependencies ..."
 yarn install
 

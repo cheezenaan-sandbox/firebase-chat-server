@@ -9,6 +9,7 @@ export default Vue.extend({
     initialEnthusiasm: {
       type: Number,
       default: 5,
+      validator: (enthusiasm: number) => enthusiasm > 0,
     },
   },
   data() {
@@ -18,7 +19,8 @@ export default Vue.extend({
   },
   computed: {
     exclamationMarks(): string {
-      return '!'.repeat(this.enthusiasm);
+      const enthusiasm = this.enthusiasm > 0 ? this.enthusiasm : 1;
+      return '!'.repeat(enthusiasm);
     },
   },
   methods: {

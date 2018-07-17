@@ -16,7 +16,11 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["/**/webpack.config.js", "/**/serve.config.js"],
+        "devDependencies": [
+          "/**/webpack.config.js",
+          "/**/serve.config.js",
+          "/**/*.story.ts"
+        ],
         "peer_Dependencies": false
       }
     ],

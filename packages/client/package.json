@@ -6,8 +6,9 @@
   "scripts": {
     "build": "webpack --config config/webpack.config.js",
     "clean": "rimraf ./dist/**/*.js",
-    "lint": "eslint --ext ts,tsx src/",
-    "serve": "webpack-serve --config config/serve.config.js"
+    "lint": "eslint --ext ts,tsx src/ stories/",
+    "serve": "webpack-serve --config config/serve.config.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "devDependencies": {
     "@storybook/vue": "4.0.0-alpha.14",

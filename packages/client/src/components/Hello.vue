@@ -7,41 +7,29 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  props: {
-    name: {
-      type: String,
-      default: '',
-    },
-    initialEnthusiasm: {
-      type: Number,
-      default: 5,
-      validator: (enthusiasm: number) => enthusiasm > 0,
-    },
-  },
-  data() {
-    return {
-      enthusiasm: this.initialEnthusiasm,
-    };
-  },
-  computed: {
-    exclamationMarks(): string {
-      const enthusiasm = this.enthusiasm > 0 ? this.enthusiasm : 1;
-      return '!'.repeat(enthusiasm);
-    },
-  },
-  methods: {
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+@Component
+export default class HelloDecorator extends Vue {
+  @Prop() name!: string;
+  @Prop() initialEnthusiasm!: number;
+
+  enthusiasm = this.initialEnthusiasm;
     increment() {
       this.enthusiasm += 1;
-    },
+    }
     decrement() {
       if (this.enthusiasm > 1) {
         this.enthusiasm -= 1;
       }
-    },
-  },
-})
+    }
+    get exclamationMarks(): string {
+      const enthusiasm = this.enthusiasm > 0 ? this.enthusiasm : 1;
+      return '!'.repeat(enthusiasm);
+    }
+
+};
+
 </script>
 
 <style>

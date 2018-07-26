@@ -1,4 +1,5 @@
 const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -14,7 +15,7 @@ module.exports = {
     filename: '[name].js',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', 'vue'],
+    extensions: ['.ts', '.tsx', '.js', '.vue'],
     modules: [path.join(__dirname, '../src'), 'node_modules'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
@@ -26,7 +27,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loader: {
+          loaders: {
             scss: 'vue-style-loader!css-loader!sass-loader',
             sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax',
           },
@@ -47,12 +48,17 @@ module.exports = {
           name: '[name].[ext]?[hash]',
         },
       },
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../src/index.html'),
     }),
+    new VueLoaderPlugin(),
   ],
   devtool: isProduction ? 'eval' : 'cheap-module-source-map',
 };

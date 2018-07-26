@@ -1,5 +1,13 @@
-import Vue from 'vue';
+<template>
+  <div>
+    <div class="greeting">Hello {{name}}{{exclamationMarks}}</div>
+    <button @click="decrement">-</button>
+    <button @click="increment">+</button>
+  </div>
+</template>
 
+<script lang="ts">
+import Vue from 'vue'
 export default Vue.extend({
   props: {
     name: {
@@ -33,11 +41,11 @@ export default Vue.extend({
       }
     },
   },
-  template: `
-    <div>
-      <div>Hello {{name}}{{exclamationMarks}}</div>
-      <button @click="decrement">-</button>
-      <button @click="increment">+</button>
-    </div>
-  `,
-});
+})
+</script>
+
+<style>
+.greeting {
+  font-size: 20px;
+}
+</style>
